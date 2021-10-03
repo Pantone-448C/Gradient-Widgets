@@ -17,12 +17,14 @@ class GradientProgressIndicator extends StatefulWidget {
     this.key,
     this.value,
     this.gradient = Gradients.hotLinear,
+    this.backgroundColor,
   }) : super(key: key);
 
   @override
   final Key? key;
   final double? value;
   final LinearGradient gradient;
+  final Color? backgroundColor;
 
   @override
   _GradientProgressIndicatorState createState() =>
@@ -68,7 +70,7 @@ class _GradientProgressIndicatorState extends State<GradientProgressIndicator>
   void _setColorsArray() {
     colors.clear();
     colors.addAll(widget.gradient.colors);
-    colors.add(widget.gradient.colors.first);
+    colors.add(widget.backgroundColor ?? widget.gradient.colors.first);
   }
 
   void _setControllerListener() {
